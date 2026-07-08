@@ -20,6 +20,11 @@ export function ThemeToggle() {
     const nextTheme = theme === "dark" ? "light" : "dark";
     document.documentElement.classList.toggle("dark", nextTheme === "dark");
     window.localStorage.setItem("theme", nextTheme);
+    window.dispatchEvent(
+      new CustomEvent("portfolio-theme-change", {
+        detail: { theme: nextTheme },
+      }),
+    );
     setTheme(nextTheme);
   };
 

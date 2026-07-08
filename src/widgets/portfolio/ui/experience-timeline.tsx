@@ -21,6 +21,13 @@ export function ExperienceTimeline() {
               glowColor="40 80 80"
               glowIntensity={1.2}
               glowRadius={60}
+              lightBackgroundColor="rgba(255, 255, 255, 0.72)"
+              lightBorderColor="rgb(0 169 183 / 24%)"
+              lightColors={["#00a9b7", "#b100d9", "#159500"]}
+              lightFillOpacity={0.18}
+              lightGlowColor="186 92 36"
+              lightGlowIntensity={0.7}
+              lightShadow="0 1px 2px rgb(15 118 129 / 5%), 0 10px 24px rgb(15 118 129 / 8%)"
             >
               <GlassCard.Root
                 accent={experience.accent}

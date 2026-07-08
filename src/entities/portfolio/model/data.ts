@@ -52,7 +52,7 @@ export type Project = {
 
 export type FreelanceProject = {
   title: string;
-  href: string;
+  href?: string;
   context: string;
   role: string;
   period: string;
@@ -242,7 +242,6 @@ export const freelanceSideProjects: FreelanceProject[] = [
   },
   {
     title: "mapLab.world",
-    href: "https://maplab.world/",
     context: "BI tool for maps industry",
     role: "React Developer",
     period: "Apr 2020 - May 2023",

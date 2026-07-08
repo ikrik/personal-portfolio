@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Activity } from "react";
 import { freelanceSideProjects } from "@/entities/portfolio/model/data";
 import { Badge } from "@/shared/ui/badge";
 import { GlassCard } from "@/shared/ui/glass-card";
@@ -27,24 +28,19 @@ export function FreelanceProjects() {
             </p>
             <div className="flex items-start justify-between gap-4">
               <GlassCard.Title className="text-xl">
+                {project.title}
+              </GlassCard.Title>
+              <Activity mode={project.href ? "visible" : "hidden"}>
                 <a
-                  className="transition hover:text-primary-bright"
+                  aria-label={`Open ${project.title}`}
+                  className="grid size-9 shrink-0 place-items-center rounded-lg border border-border text-primary transition hover:border-primary-bright hover:text-primary-bright"
                   href={project.href}
                   rel="noreferrer"
                   target="_blank"
                 >
-                  {project.title}
+                  <ArrowUpRight aria-hidden className="size-4" />
                 </a>
-              </GlassCard.Title>
-              <a
-                aria-label={`Open ${project.title}`}
-                className="grid size-9 shrink-0 place-items-center rounded-lg border border-border text-primary transition hover:border-primary-bright hover:text-primary-bright"
-                href={project.href}
-                rel="noreferrer"
-                target="_blank"
-              >
-                <ArrowUpRight aria-hidden className="size-4" />
-              </a>
+              </Activity>
             </div>
             <div className="mt-4 flex flex-col gap-1 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-muted">
               <span>{project.role}</span>

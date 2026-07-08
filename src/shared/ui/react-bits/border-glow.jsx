@@ -1,7 +1,28 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./border-glow.css";
+
+const DARK_THEME = "dark";
+const LIGHT_THEME = "light";
+const LIGHT_THEME_BORDER_GLOW = {
+  backgroundColor: "rgba(255, 255, 255, 0.72)",
+  borderColor: "rgb(0 169 183 / 22%)",
+  colors: ["#00a9b7", "#b100d9", "#159500"],
+  edgeBlendMode: "normal",
+  fillBlendMode: "normal",
+  fillOpacity: 0.18,
+  glowColor: "186 92 36",
+  glowIntensity: 0.7,
+  shadow: "0 1px 2px rgb(15 118 129 / 6%), 0 8px 20px rgb(15 118 129 / 8%)",
+};
+
+function getStoredTheme() {
+  if (typeof window === "undefined") return DARK_THEME;
+  return window.localStorage.getItem("theme") === LIGHT_THEME
+    ? LIGHT_THEME
+    : DARK_THEME;
+}
 
 function parseHSL(hslStr) {
   const match = hslStr.match(/([\d.]+)\s*([\d.]+)%?\s*([\d.]+)%?/);
@@ -90,6 +111,8 @@ const BorderGlow = ({
   edgeSensitivity = 30,
   glowColor = "40 80 80",
   backgroundColor = "#120F17",
+  borderColor = "rgb(255 255 255 / 15%)",
+  shadow = "0 1px 2px rgb(0 0 0 / 10%), 0 2px 4px rgb(0 0 0 / 10%), 0 4px 8px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%), 0 16px 32px rgb(0 0 0 / 10%), 0 32px 64px rgb(0 0 0 / 10%)",
   borderRadius = 28,
   glowRadius = 40,
   glowIntensity = 1.0,
@@ -97,8 +120,33 @@ const BorderGlow = ({
   animated = false,
   colors = ["#c084fc", "#f472b6", "#38bdf8"],
   fillOpacity = 0.5,
+  fillBlendMode = "soft-light",
+  edgeBlendMode = "plus-lighter",
+  lightBackgroundColor = LIGHT_THEME_BORDER_GLOW.backgroundColor,
+  lightBorderColor = LIGHT_THEME_BORDER_GLOW.borderColor,
+  lightColors = LIGHT_THEME_BORDER_GLOW.colors,
+  lightEdgeBlendMode = LIGHT_THEME_BORDER_GLOW.edgeBlendMode,
+  lightFillBlendMode = LIGHT_THEME_BORDER_GLOW.fillBlendMode,
+  lightFillOpacity = LIGHT_THEME_BORDER_GLOW.fillOpacity,
+  lightGlowColor = LIGHT_THEME_BORDER_GLOW.glowColor,
+  lightGlowIntensity = LIGHT_THEME_BORDER_GLOW.glowIntensity,
+  lightShadow = LIGHT_THEME_BORDER_GLOW.shadow,
 }) => {
   const cardRef = useRef(null);
+  const [theme, setTheme] = useState(getStoredTheme);
+  const isLightTheme = theme === LIGHT_THEME;
+
+  const activeBackgroundColor = isLightTheme
+    ? lightBackgroundColor
+    : backgroundColor;
+  const activeBorderColor = isLightTheme ? lightBorderColor : borderColor;
+  const activeColors = isLightTheme ? lightColors : colors;
+  const activeEdgeBlendMode = isLightTheme ? lightEdgeBlendMode : edgeBlendMode;
+  const activeFillBlendMode = isLightTheme ? lightFillBlendMode : fillBlendMode;
+  const activeFillOpacity = isLightTheme ? lightFillOpacity : fillOpacity;
+  const activeGlowColor = isLightTheme ? lightGlowColor : glowColor;
+  const activeGlowIntensity = isLightTheme ? lightGlowIntensity : glowIntensity;
+  const activeShadow = isLightTheme ? lightShadow : shadow;
 
   const getCenterOfElement = useCallback((el) => {
     const { width, height } = el.getBoundingClientRect();
@@ -152,6 +200,20 @@ const BorderGlow = ({
   );
 
   useEffect(() => {
+    function syncTheme(event) {
+      setTheme(event?.detail?.theme ?? getStoredTheme());
+    }
+
+    window.addEventListener("storage", syncTheme);
+    window.addEventListener("portfolio-theme-change", syncTheme);
+
+    return () => {
+      window.removeEventListener("storage", syncTheme);
+      window.removeEventListener("portfolio-theme-change", syncTheme);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!animated || !cardRef.current) return;
     const card = cardRef.current;
     const angleStart = 110;
@@ -198,7 +260,7 @@ const BorderGlow = ({
     });
   }, [animated]);
 
-  const glowVars = buildGlowVars(glowColor, glowIntensity);
+  const glowVars = buildGlowVars(activeGlowColor, activeGlowIntensity);
 
   return (
     <div
@@ -206,14 +268,18 @@ const BorderGlow = ({
       onPointerMove={handlePointerMove}
       className={`border-glow-card ${className}`}
       style={{
-        "--card-bg": backgroundColor,
+        "--card-bg": activeBackgroundColor,
+        "--border-glow-border-color": activeBorderColor,
+        "--border-glow-shadow": activeShadow,
+        "--edge-blend-mode": activeEdgeBlendMode,
         "--edge-sensitivity": edgeSensitivity,
         "--border-radius": `${borderRadius}px`,
         "--glow-padding": `${glowRadius}px`,
         "--cone-spread": coneSpread,
-        "--fill-opacity": fillOpacity,
+        "--fill-blend-mode": activeFillBlendMode,
+        "--fill-opacity": activeFillOpacity,
         ...glowVars,
-        ...buildGradientVars(colors),
+        ...buildGradientVars(activeColors),
       }}
     >
       <span className="edge-light" />

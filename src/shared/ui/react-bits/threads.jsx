@@ -5,6 +5,18 @@ import { useEffect, useRef } from "react";
 
 import "./threads.css";
 
+const DARK_THEME_THREADS_COLOR = [1, 11, 110];
+const LIGHT_THEME_THREADS_COLOR = [0, 0.32, 0.36];
+
+function getStoredTheme() {
+  if (typeof window === "undefined") return "dark";
+  return window.localStorage.getItem("theme") === "light" ? "light" : "dark";
+}
+
+function getThemeAwareColor(color, lightColor) {
+  return getStoredTheme() === "light" ? lightColor : color;
+}
+
 const vertexShader = `
 attribute vec2 position;
 attribute vec2 uv;
@@ -123,7 +135,8 @@ void main() {
 `;
 
 const Threads = ({
-  color = [1, 11, 110],
+  color = DARK_THEME_THREADS_COLOR,
+  lightColor = LIGHT_THEME_THREADS_COLOR,
   amplitude = 1,
   distance = 0,
   enableMouseInteraction = false,
@@ -131,16 +144,37 @@ const Threads = ({
 }) => {
   const containerRef = useRef(null);
   const animationFrameId = useRef(0);
+  const themeAwareColor = getThemeAwareColor(color, lightColor);
 
   // Keep the latest props in a ref so updating them mutates the live shader
   // uniforms instead of tearing down and rebuilding the whole WebGL context.
   const propsRef = useRef({
-    color,
+    color: themeAwareColor,
     amplitude,
     distance,
     enableMouseInteraction,
   });
-  propsRef.current = { color, amplitude, distance, enableMouseInteraction };
+  propsRef.current = {
+    color: themeAwareColor,
+    amplitude,
+    distance,
+    enableMouseInteraction,
+  };
+
+  useEffect(() => {
+    function syncThemeColor() {
+      propsRef.current.color = getThemeAwareColor(color, lightColor);
+    }
+
+    syncThemeColor();
+    window.addEventListener("storage", syncThemeColor);
+    window.addEventListener("portfolio-theme-change", syncThemeColor);
+
+    return () => {
+      window.removeEventListener("storage", syncThemeColor);
+      window.removeEventListener("portfolio-theme-change", syncThemeColor);
+    };
+  }, [color, lightColor]);
 
   useEffect(() => {
     const container = containerRef.current;

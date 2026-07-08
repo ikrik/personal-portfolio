@@ -30,8 +30,9 @@ export function ProjectsSection() {
                 alt="Futuristic dashboard interface with neon data visualizations"
                 className="object-cover grayscale transition duration-700 hover:scale-105 hover:grayscale-0"
                 fill
-                sizes="(min-width: 1024px) 760px, 100vw"
-                src="/images/project-dashboard.png"
+                loading="lazy"
+                src="/images/nature-restorer.png"
+                sizes="100vw"
               />
             </div>
             <div className="p-6 md:p-8">
