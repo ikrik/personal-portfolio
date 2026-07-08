@@ -16,8 +16,8 @@ export function ProjectsSection() {
           Product systems shaped around performance and delivery.
         </Section.Title>
         <Section.Intro>
-          Selected work across CMS platforms, analytics products, AI-enabled
-          interfaces, mobile MVPs, and workflow automation.
+          Selected public repositories covering full-stack dashboards, Angular
+          architecture, game logic, microservices, and this portfolio system.
         </Section.Intro>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-12">
@@ -27,12 +27,15 @@ export function ProjectsSection() {
           >
             <div className="relative h-64 overflow-hidden bg-surface-elevated">
               <Image
-                alt="Futuristic dashboard interface with neon data visualizations"
+                alt={
+                  featuredProject.imageAlt ??
+                  `${featuredProject.title} project preview`
+                }
                 className="object-cover grayscale transition duration-700 hover:scale-105 hover:grayscale-0"
                 fill
                 loading="lazy"
-                src="/images/nature-restorer.png"
                 sizes="100vw"
+                src={featuredProject.image ?? "/images/nature-restorer.png"}
               />
             </div>
             <div className="p-6 md:p-8">
@@ -44,9 +47,11 @@ export function ProjectsSection() {
                   <GlassCard.Title>{featuredProject.title}</GlassCard.Title>
                 </GlassCard.Header>
                 <a
-                  aria-label={`${featuredProject.title} case study`}
+                  aria-label={`Open ${featuredProject.title} repository`}
                   className="grid size-11 shrink-0 place-items-center rounded-lg border border-border text-primary transition hover:border-primary-bright hover:text-primary-bright"
-                  href="#contact"
+                  href={featuredProject.href}
+                  rel="noreferrer"
+                  target="_blank"
                 >
                   <ArrowUpRight aria-hidden className="size-5" />
                 </a>
@@ -61,6 +66,26 @@ export function ProjectsSection() {
                   </Badge>
                 ))}
               </GlassCard.Footer>
+              {featuredProject.liveHref ? (
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-primary transition hover:text-primary-bright"
+                    href={featuredProject.href}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Source
+                  </a>
+                  <a
+                    className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-primary transition hover:text-primary-bright"
+                    href={featuredProject.liveHref}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Live Demo
+                  </a>
+                </div>
+              ) : null}
             </div>
           </GlassCard.Root>
 
@@ -75,7 +100,18 @@ export function ProjectsSection() {
               <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-primary-bright">
                 {project.category}
               </p>
-              <GlassCard.Title>{project.title}</GlassCard.Title>
+              <div className="flex items-start justify-between gap-4">
+                <GlassCard.Title>{project.title}</GlassCard.Title>
+                <a
+                  aria-label={`Open ${project.title} repository`}
+                  className="grid size-9 shrink-0 place-items-center rounded-lg border border-border text-primary transition hover:border-primary-bright hover:text-primary-bright"
+                  href={project.href}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <ArrowUpRight aria-hidden className="size-4" />
+                </a>
+              </div>
               <GlassCard.Description className="mt-4">
                 {project.summary}
               </GlassCard.Description>
@@ -86,6 +122,16 @@ export function ProjectsSection() {
                   </Badge>
                 ))}
               </GlassCard.Footer>
+              {project.liveHref ? (
+                <a
+                  className="mt-5 inline-flex font-mono text-xs font-semibold uppercase tracking-[0.14em] text-primary transition hover:text-primary-bright"
+                  href={project.liveHref}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Live Demo
+                </a>
+              ) : null}
             </GlassCard.Root>
           ))}
         </div>

@@ -47,7 +47,11 @@ export type Project = {
   summary: string;
   tags: string[];
   accent: Accent;
+  href: string;
   featured?: boolean;
+  image?: string;
+  imageAlt?: string;
+  liveHref?: string;
 };
 
 export type FreelanceProject = {
@@ -328,45 +332,56 @@ export const stackGroups: StackGroup[] = [
 
 export const projects: Project[] = [
   {
-    title: "Next.js Headless CMS",
-    category: "Enterprise SaaS",
+    title: "NatureRestorer",
+    category: "Full-Stack Dashboard",
     summary:
-      "A scalable CMS platform with reusable design system foundations, Clean Architecture, Storybook, Nx monorepo conventions, and server-backed BFF integrations.",
-    tags: ["Next.js", "TypeScript", "Storybook", "Nx", "AWS"],
+      "A restoration-site dashboard with authenticated routes, RBAC, admin tooling, biodiversity metrics, Mapbox location context, Prisma, and Supabase-backed PostgreSQL.",
+    tags: ["Next.js 16", "React 19", "Prisma", "Supabase", "Mapbox"],
     accent: "cyan",
+    href: "https://github.com/ikrik/NatureRestorer",
     featured: true,
+    image: "/images/nature-restorer.png",
+    imageAlt:
+      "NatureRestorer dashboard preview with restoration metrics and map context",
+    liveHref: "https://nature-restorer.vercel.app/dashboard",
   },
   {
-    title: "B2B Analytics + AI",
-    category: "Data Science",
+    title: "Moviescope",
+    category: "Angular Architecture",
     summary:
-      "Pharmaceutical analytics dashboards paired with an LLM chatbot that returns citation-backed, transparent answers over complex domain data.",
-    tags: ["Angular", "OpenAI", "RxJS", "Data Viz"],
+      "An Angular 21 movie SPA using TMDB data, Feature-Sliced Design, NgRx SignalStore, persistence, debounced search, favorites, dialogs, and resilient image loading.",
+    tags: ["Angular 21", "NgRx Signals", "TMDB", "RxJS", "Vitest"],
     accent: "pink",
+    href: "https://github.com/ikrik/movies-angular-app",
+    liveHref: "https://ikrik.github.io/movies-angular-app/",
   },
   {
-    title: "AI Mobile MVP",
-    category: "Mobile First",
+    title: "Tic Tac Toe",
+    category: "React Game Logic",
     summary:
-      "React Native and Expo app delivery with Stripe payments and NestJS backend updates to help secure initial funding.",
-    tags: ["React Native", "Expo", "Stripe"],
+      "A client-side Tic Tac Toe app focused on rule correctness, accessibility, clean separation between domain and UI, two game modes, and testable AI heuristics.",
+    tags: ["React 19", "TypeScript", "Vite", "Vitest", "Radix UI"],
     accent: "purple",
+    href: "https://github.com/ikrik/Tic-Tac-Toe",
+    liveHref: "https://tic-tac-toe-ikrik.vercel.app",
   },
   {
-    title: "Microfrontends CMS",
-    category: "Architecture",
+    title: "Event Management",
+    category: "Microservices",
     summary:
-      "Module Federation-based CMS allowing independent deployment, plugin isolation, and faster release flow for product teams.",
-    tags: ["React", "Module Federation", "Apollo"],
+      "A Dockerized event management system with a Next.js frontend, NestJS API gateway, NestJS event microservice, TCP transport, search, pagination, and event CRUD flows.",
+    tags: ["Next.js 15", "NestJS", "Docker", "SWR", "Microservices"],
     accent: "green",
+    href: "https://github.com/ikrik/Event-management",
   },
   {
-    title: "Expert Matching",
-    category: "Automation",
+    title: "Personal Portfolio",
+    category: "Portfolio System",
     summary:
-      "Chrome extension and rewritten React workflows that reduced manual expert-matching overhead and improved analyst throughput.",
-    tags: ["React", "Chrome Extension", "GraphQL"],
+      "This portfolio implementation: a responsive, SEO-minded one-page Next.js app built from a Google Stitch design with Feature-Sliced Design, theme support, and reusable UI primitives.",
+    tags: ["Next.js 16", "Tailwind CSS", "Biome", "React Bits"],
     accent: "orange",
+    href: "https://github.com/ikrik/personal-portfolio",
   },
 ];
 

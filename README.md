@@ -1,6 +1,6 @@
-# Krikor Tsakmatzian Portfolio
+# Personal Portfolio
 
-Personal portfolio website for Krikor Tsakmatzian, a Senior Frontend /
+A Personal portfolio website showcasing myself as a Senior Frontend /
 Full-stack engineer with a strong frontend focus and 10+ years of experience.
 
 The site is a responsive one-page portfolio built with Next.js. It presents the
