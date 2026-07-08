@@ -217,12 +217,11 @@ export const earlierRoles = [
 export const freelanceSideProjects: FreelanceProject[] = [
   {
     title: "Pegasus ASTRO",
-    href: "https://pegasusastro.com/",
     context: "Astronomy automation",
     role: "Senior Front-end Developer",
     period: "Oct 2024 - Jun 2025",
     summary:
-      "Desktop and web tooling for automating amateur astronomy and astrophotography workflows.",
+      "Desktop tooling for automating amateur astronomy and astrophotography workflows.",
     tags: [
       "Electron",
       "Next.js",
