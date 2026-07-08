@@ -353,6 +353,8 @@ export const projects: Project[] = [
     tags: ["Angular 21", "NgRx Signals", "TMDB", "RxJS", "Vitest"],
     accent: "pink",
     href: "https://github.com/ikrik/movies-angular-app",
+    image: "/images/moviescope.png",
+    imageAlt: "Moviescope Angular app interface with movie browsing screens",
     liveHref: "https://ikrik.github.io/movies-angular-app/",
   },
   {
@@ -363,7 +365,7 @@ export const projects: Project[] = [
     tags: ["React 19", "TypeScript", "Vite", "Vitest", "Radix UI"],
     accent: "purple",
     href: "https://github.com/ikrik/Tic-Tac-Toe",
-    liveHref: "https://tic-tac-toe-ikrik.vercel.app",
+    liveHref: "https://tic-tac-toe-accessible-game.vercel.app/",
   },
   {
     title: "Event Management",

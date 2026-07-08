@@ -3,7 +3,7 @@ import Image from "next/image";
 import { profile } from "@/entities/portfolio/model/data";
 import { Badge } from "@/shared/ui/badge";
 import { Button } from "@/shared/ui/button";
-import Threads from "@/shared/ui/react-bits/threads";
+import { ElectricBorder, Threads } from "@/shared/ui/react-bits";
 
 export function HeroSection() {
   return (
@@ -51,34 +51,41 @@ export function HeroSection() {
         </div>
 
         <div className="flex items-center justify-center md:justify-end">
-          <div className="group relative w-full max-w-[28rem]">
-            <div className="absolute -inset-3 rounded-[2.25rem] bg-gradient-to-r from-primary-bright via-pink to-secondary-bright opacity-20 blur-2xl transition duration-700 group-hover:opacity-40" />
-            <div className="glass-surface relative overflow-hidden rounded-[2rem] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.28)] md:p-5">
-              <div className="mb-4 flex items-center justify-between rounded-lg border border-primary-bright/15 bg-background/55 px-4 py-3 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-muted">
-                <span>
-                  <span className="text-primary-bright">$</span>{" "}
-                  <span className="text-primary">avatar.render()</span>
-                </span>
-                <span className="flex items-center gap-2 text-tertiary-bright">
-                  <span className="size-1.5 rounded-full bg-tertiary-bright shadow-[0_0_12px_rgba(59,255,23,0.85)]" />
-                  online
-                </span>
-              </div>
-              <div className="relative mx-auto aspect-square max-w-[24rem] overflow-hidden rounded-full border border-primary-bright/40 bg-surface-elevated p-1 shadow-[inset_0_0_40px_rgba(0,245,255,0.08)]">
-                <div className="relative size-full overflow-hidden rounded-full">
-                  <Image
-                    alt="Cartoon-style portrait of Krikor Tsakmatzian"
-                    className="object-cover grayscale transition duration-700 hover:scale-105 hover:grayscale-0"
-                    fill
-                    priority
-                    sizes="(min-width: 768px) 384px, 80vw"
-                    src="/images/avatar.jpg"
-                  />
-                  <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_25%,transparent_38%,rgba(0,0,0,0.3)_100%)]" />
+          <ElectricBorder
+            color="#00f5ff" //"#7df9ff"
+            speed={1.5}
+            chaos={0.03}
+            className="group relative w-full max-w-[28rem] rounded-[2.25rem]"
+          >
+            <div className="group relative w-full max-w-[28rem]">
+              <div className="absolute -inset-3 rounded-[2.25rem] bg-gradient-to-r from-primary-bright via-pink to-secondary-bright opacity-20 blur-2xl transition duration-700 group-hover:opacity-40" />
+              <div className="glass-surface relative overflow-hidden rounded-[2rem] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.28)] md:p-5">
+                <div className="mb-4 flex items-center justify-between rounded-lg border border-primary-bright/15 bg-background/55 px-4 py-3 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-muted">
+                  <span>
+                    <span className="text-primary-bright">$</span>{" "}
+                    <span className="text-primary">avatar.render()</span>
+                  </span>
+                  <span className="flex items-center gap-2 text-tertiary-bright">
+                    <span className="size-1.5 rounded-full bg-tertiary-bright shadow-[0_0_12px_rgba(59,255,23,0.85)]" />
+                    online
+                  </span>
+                </div>
+                <div className="relative mx-auto aspect-square max-w-[24rem] overflow-hidden rounded-full border border-primary-bright/40 bg-surface-elevated p-1 shadow-[inset_0_0_40px_rgba(0,245,255,0.08)]">
+                  <div className="relative size-full overflow-hidden rounded-full">
+                    <Image
+                      alt="Cartoon-style portrait of Krikor Tsakmatzian"
+                      className="object-cover grayscale transition duration-700 hover:scale-105 hover:grayscale-0"
+                      fill
+                      priority
+                      sizes="(min-width: 768px) 384px, 80vw"
+                      src="/images/avatar.jpg"
+                    />
+                    <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_25%,transparent_38%,rgba(0,0,0,0.3)_100%)]" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </ElectricBorder>
         </div>
       </section>
     </section>

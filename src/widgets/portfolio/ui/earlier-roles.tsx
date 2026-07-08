@@ -18,7 +18,7 @@ export function EarlierRoles() {
                 {role.period}
               </p>
             </div>
-            <GlassCard.Description className="mt-2 text-sm">
+            <GlassCard.Description className="mt-2 text-sm text-center sm:text-left">
               {role.detail}
             </GlassCard.Description>
           </GlassCard.Root>

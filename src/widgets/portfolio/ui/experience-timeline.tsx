@@ -1,7 +1,7 @@
 import { experiences } from "@/entities/portfolio/model/data";
 import { Badge } from "@/shared/ui/badge";
 import { GlassCard } from "@/shared/ui/glass-card";
-import BorderGlow from "@/shared/ui/react-bits/border-glow";
+import { BorderGlow } from "@/shared/ui/react-bits";
 
 export function ExperienceTimeline() {
   return (

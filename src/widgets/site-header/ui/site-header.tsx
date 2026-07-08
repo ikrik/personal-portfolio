@@ -10,7 +10,7 @@ export function SiteHeader() {
       <nav className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between px-5 md:px-6">
         <a
           aria-label="Krikor Tsakmatzian home"
-          className="group flex items-center gap-3"
+          className="group flex cursor-pointer items-center gap-3 rounded-lg transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-bright"
           href="#top"
         >
           <span className="grid size-9 place-items-center rounded-lg border border-primary-bright/30 bg-primary-bright/10 font-sans text-lg font-bold text-primary transition group-hover:border-primary-bright group-hover:shadow-[0_0_24px_rgba(0,245,255,0.2)]">
@@ -24,11 +24,12 @@ export function SiteHeader() {
         <div className="hidden items-center gap-7 md:flex">
           {navigation.map((item) => (
             <a
-              className="font-mono text-xs uppercase tracking-[0.14em] text-text-muted transition hover:text-primary"
+              className="group relative rounded-lg px-2 py-2 font-mono text-xs uppercase tracking-[0.14em] text-text-muted transition hover:bg-surface-elevated hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-bright"
               href={item.href}
               key={item.href}
             >
               {item.label}
+              <span className="absolute inset-x-2 -bottom-0.5 h-px origin-left scale-x-0 bg-primary-bright transition group-hover:scale-x-100 group-focus-visible:scale-x-100" />
             </a>
           ))}
         </div>
@@ -51,10 +52,10 @@ export function SiteHeader() {
             >
               <Menu aria-hidden className="size-5" />
             </summary>
-            <div className="glass-surface absolute right-0 top-13 w-56 rounded-xl p-2">
+            <div className="bg-background/90 backdrop-blur-2xl absolute right-0 top-13 w-56 rounded-xl p-2 drop-shadow-lg">
               {navigation.map((item) => (
                 <a
-                  className="block rounded-lg px-4 py-3 font-mono text-xs uppercase tracking-[0.14em] text-text-muted transition hover:bg-surface-elevated hover:text-primary"
+                  className="block cursor-pointer rounded-lg border border-transparent px-4 py-3 font-mono text-xs uppercase tracking-[0.14em] text-text-muted transition hover:border-primary-bright/30 hover:bg-surface-elevated hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-bright"
                   href={item.href}
                   key={item.href}
                 >
