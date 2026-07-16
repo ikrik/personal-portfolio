@@ -5,7 +5,7 @@ import { BorderGlow } from "@/shared/ui/react-bits";
 
 export function ExperienceTimeline() {
   return (
-    <div className="relative mt-14">
+    <div className="relative mt-8 md:mt-14">
       <div className="timeline-line absolute bottom-10 left-4 top-3 hidden w-px md:block" />
       <div className="space-y-7 md:ml-8">
         {experiences.map((experience) => (

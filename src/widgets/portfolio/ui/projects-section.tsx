@@ -21,7 +21,7 @@ export function ProjectsSection() {
           architecture, game logic, microservices, and this portfolio system.
         </Section.Intro>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-12">
+        <div className="mt-8 md:mt-14 grid gap-6 lg:grid-cols-12">
           <GlassCard.Root
             accent={featuredProject.accent}
             className="flex flex-col overflow-hidden lg:col-span-8"

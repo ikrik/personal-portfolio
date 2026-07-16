@@ -2,6 +2,11 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { identity } from "@/entities/portfolio/model/identity";
+import {
+  identityStructuredData,
+  serializeJsonLd,
+} from "@/entities/portfolio/model/structured-data";
 
 import "./globals.css";
 
@@ -21,35 +26,52 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://krikor.dev"),
+  metadataBase: new URL(identity.website),
   title: {
-    default: "Krikor Tsakmatzian | Senior Full-Stack Engineer",
-    template: "%s | Krikor Tsakmatzian",
+    default: `${identity.name} | ${identity.role}`,
+    template: `%s | ${identity.name}`,
   },
-  description:
-    "Senior frontend-focused full-stack engineer building scalable React, Next.js, Angular, and TypeScript product systems.",
+  description: identity.metaDescription,
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
-    "Krikor Tsakmatzian",
-    "Senior Full-Stack Engineer",
+    identity.name,
+    identity.preferredName,
+    "Krik Tsakmatzian",
+    identity.role,
     "Frontend Architecture",
     "React",
     "Next.js",
     "Angular",
     "TypeScript",
   ],
-  authors: [{ name: "Krikor Tsakmatzian" }],
-  creator: "Krikor Tsakmatzian",
+  authors: [{ name: identity.name, url: identity.website }],
+  creator: identity.name,
+  publisher: identity.name,
   openGraph: {
-    title: "Krikor Tsakmatzian | Senior Full-Stack Engineer",
-    description:
-      "Scalable frontend architecture and high-performance UI systems for modern product teams.",
+    title: `${identity.name} | ${identity.role}`,
+    description: identity.metaDescription,
+    url: "/",
     type: "website",
     locale: "en_US",
-    siteName: "Krikor Tsakmatzian Portfolio",
+    siteName: `${identity.name} Portfolio`,
+  },
+  twitter: {
+    card: "summary",
+    title: `${identity.name} | ${identity.role}`,
+    description: identity.metaDescription,
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -64,9 +86,18 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} dark h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">{children}</body>
-      <Analytics />
-      <SpeedInsights />
+      <body className="flex min-h-full flex-col">
+        <script
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Next.js recommends this for JSON-LD; the serializer escapes "<" to prevent script injection.
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(identityStructuredData),
+          }}
+        />
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

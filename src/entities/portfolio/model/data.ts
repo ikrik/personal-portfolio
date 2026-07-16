@@ -15,6 +15,7 @@ import {
   Sparkles,
   TerminalSquare,
 } from "lucide-react";
+import { identity } from "./identity";
 
 export type Accent = "cyan" | "pink" | "purple" | "green" | "orange";
 
@@ -65,22 +66,7 @@ export type FreelanceProject = {
   accent: Accent;
 };
 
-export const profile = {
-  name: "Krikor Tsakmatzian",
-  initials: "KT",
-  location: "Athens, Greece",
-  email: "gregtsakma@gmail.com",
-  role: "Senior Full-Stack Engineer",
-  positioning: "Frontend-Focused",
-  headline: "Senior Full-Stack Engineer building scalable systems.",
-  summary:
-    "Specializing in high-performance frontend architecture, microfrontends, and AI-driven product experiences. I translate complex requirements into maintainable, accessible, and performant product realities.",
-  links: {
-    github: "https://github.com/ikrik",
-    linkedin: "https://www.linkedin.com/in/krikor-tsakmatzian/",
-    email: "mailto:gregtsakma@gmail.com",
-  },
-};
+export const profile = identity;
 
 export const navigation = [
   { href: "#experience", label: "Experience" },

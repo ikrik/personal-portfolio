@@ -14,22 +14,26 @@ export function StatsSection() {
   return (
     <Section.Root className="pt-0">
       <Section.Container>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
           {stats.map((stat) => {
             const Icon = stat.icon;
 
             return (
               <GlassCard.Root
                 accent={stat.accent}
-                className="p-6"
+                className="p-3 sm:p-6"
                 key={stat.value}
               >
                 <Icon
                   aria-hidden
-                  className={`mb-8 size-8 ${iconToneClassName[stat.accent]}`}
+                  className={`mb-3 size-5 sm:mb-8 sm:size-8 ${iconToneClassName[stat.accent]}`}
                 />
-                <GlassCard.Title>{stat.value}</GlassCard.Title>
-                <GlassCard.Description>{stat.label}</GlassCard.Description>
+                <GlassCard.Title className="text-base sm:text-xl md:text-2xl">
+                  {stat.value}
+                </GlassCard.Title>
+                <GlassCard.Description className="text-xs leading-5 sm:text-sm sm:leading-7 md:text-base">
+                  {stat.label}
+                </GlassCard.Description>
               </GlassCard.Root>
             );
           })}

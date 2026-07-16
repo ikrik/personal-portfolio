@@ -6,7 +6,7 @@ import { Button } from "@/shared/ui/button";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-background/55 backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 border-b border-white/5 bg-background/55 shadow-[0_4px_24px_rgba(0,0,0,0.18)] backdrop-blur-2xl dark:shadow-[0_4px_24px_rgba(0,0,0,0.18)]">
       <nav className="mx-auto flex h-16 w-full max-w-[1200px] items-center justify-between px-5 md:px-6">
         <a
           aria-label="Krikor Tsakmatzian home"

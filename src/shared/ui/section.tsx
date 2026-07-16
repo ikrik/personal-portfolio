@@ -50,7 +50,7 @@ function Intro({ className, ...props }: ComponentPropsWithoutRef<"p">) {
   return (
     <p
       className={cn(
-        "mt-5 max-w-2xl text-base leading-8 text-text-muted",
+        "mt-5 max-w-2xl text-base leading-6 md:leading-8 text-text-muted",
         className,
       )}
       {...props}

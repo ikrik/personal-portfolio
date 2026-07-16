@@ -9,7 +9,7 @@ const LIGHT_THEME = "light";
 type Theme = typeof DARK_THEME | typeof LIGHT_THEME;
 
 const LIGHT_THEME_BORDER_GLOW = {
-  backgroundColor: "rgba(255, 255, 255, 0.72)",
+  backgroundColor: "hsla(0, 0%, 100%, 0.94)",
   borderColor: "rgb(0 169 183 / 22%)",
   colors: ["#00a9b7", "#b100d9", "#159500"],
   edgeBlendMode: "normal",
@@ -183,7 +183,7 @@ const BorderGlow = ({
   lightShadow = LIGHT_THEME_BORDER_GLOW.shadow,
 }: BorderGlowProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [theme, setTheme] = useState(getStoredTheme);
+  const [theme, setTheme] = useState<Theme>(DARK_THEME);
   const isLightTheme = theme === LIGHT_THEME;
 
   const activeBackgroundColor = isLightTheme
@@ -255,6 +255,7 @@ const BorderGlow = ({
       setTheme(customEvent.detail?.theme ?? getStoredTheme());
     }
 
+    setTheme(getStoredTheme());
     window.addEventListener("storage", syncTheme);
     window.addEventListener("portfolio-theme-change", syncTheme);
 

@@ -31,21 +31,14 @@ export function ContactSection() {
           {profile.email}
         </a>
         <div className="mt-8 flex justify-center gap-7 font-mono text-xs uppercase tracking-[0.14em] text-text-muted">
-          <a
-            className="cursor-pointer rounded-lg px-2 py-2 transition hover:text-primary hover:underline hover:decoration-primary-bright hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-bright"
-            href={profile.links.linkedin}
-          >
-            LinkedIn
-          </a>
-          <a
-            className="cursor-pointer rounded-lg px-2 py-2 transition hover:text-primary hover:underline hover:decoration-primary-bright hover:underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-bright"
-            href={profile.links.github}
-          >
-            GitHub
-          </a>
           <span className="flex items-center gap-2 rounded-lg bg-surface-elevated px-2 py-2">
-            <MapPin aria-hidden className="size-4 text-primary-bright" />
-            <span>{profile.location}</span>
+            <MapPin
+              aria-hidden
+              className="size-3 md:size-4 text-primary-bright"
+            />
+            <span className="font-semibold text-[0.625rem] md:text-xs">
+              Remote First - Based in {profile.location}
+            </span>
           </span>
         </div>
         <Button asChild className="mt-12" size="lg">
