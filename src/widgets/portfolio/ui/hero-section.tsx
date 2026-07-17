@@ -33,7 +33,7 @@ export function HeroSection() {
             className="neon-text max-w-4xl font-sans text-4xl md:text-5xl font-bold leading-[0.95] tracking-tight text-primary sm:text-6xl md:text-7xl"
             id="hero-heading"
           >
-            Front-end Enthousiast{" "}
+            Frontend Enthusiast{" "}
             <span className="md:block pt-2 text-linear-gradient">
               building scalable systems.
             </span>

@@ -19,6 +19,7 @@ export type PortfolioIdentity = {
   professionalSummary: string;
   metaDescription: string;
   skills: readonly string[];
+  technologies: readonly string[];
   experienceAreas: readonly string[];
   links: {
     website: string;
@@ -56,12 +57,26 @@ export const identity = {
   },
   headline: "Senior Full-Stack Engineer building scalable systems.",
   summary:
-    "Specializing in high-performance frontend architecture, microfrontends, and AI-driven product experiences. I translate complex requirements into maintainable, accessible, and performant product realities.",
+    "Krikor Tsakmatzian is a Senior Full-Stack Engineer based in Athens, Greece, specializing in high-performance frontend architecture, microfrontends, and AI-driven product experiences. He translates complex requirements into maintainable, accessible, and performant product realities.",
   professionalSummary:
     "Krikor Tsakmatzian is a Senior Full-Stack Engineer with more than 10 years of experience building scalable web applications, SaaS platforms, analytics dashboards, design systems, and data-intensive products. His main expertise is frontend architecture using React, Next.js, Angular, and TypeScript, with additional backend experience in Node.js, NestJS, and Fastify. He has experience with microfrontends, monorepos, BFF architectures, state management, performance optimization, testing, CI/CD, AI interfaces, and long-term product ownership.",
   metaDescription:
     "Krikor Tsakmatzian is a Senior Full-Stack Engineer in Athens specializing in scalable frontend architecture with React, Next.js, Angular, and TypeScript.",
   skills: [
+    "Frontend architecture",
+    "Full-stack engineering",
+    "Scalable web applications",
+    "Microfrontends",
+    "Design systems",
+    "Data-intensive products",
+    "Performance optimization",
+    "State management",
+    "Testing",
+    "CI/CD",
+    "AI interfaces",
+    "Product ownership",
+  ],
+  technologies: [
     "TypeScript",
     "JavaScript",
     "React",

@@ -8,10 +8,13 @@ export function GET() {
       name: identity.name,
       preferredName: identity.preferredName,
       aliases: identity.aliases,
+      canonicalId: `${identity.website}/#person`,
       role: identity.jobTitle,
       location: identity.location,
       summary: identity.professionalSummary,
       skills: identity.skills,
+      technologies: identity.technologies,
+      sameAs: [identity.links.github, identity.links.linkedin],
       links: {
         website: identity.links.website,
         github: identity.links.github,

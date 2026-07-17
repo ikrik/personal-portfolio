@@ -4,9 +4,9 @@ import { GlassCard } from "@/shared/ui/glass-card";
 export function EarlierRoles() {
   return (
     <div className="mt-20">
-      <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary-bright">
+      <h3 className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-primary-bright">
         Earlier Roles
-      </p>
+      </h3>
       <div className="grid gap-4 md:grid-cols-3">
         {earlierRoles.map((role) => (
           <GlassCard.Root accent="cyan" className="p-5" key={role.company}>

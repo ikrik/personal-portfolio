@@ -12,8 +12,14 @@ const iconToneClassName = {
 
 export function StatsSection() {
   return (
-    <Section.Root className="pt-0">
+    <Section.Root
+      aria-labelledby="portfolio-highlights-heading"
+      className="pt-0"
+    >
       <Section.Container>
+        <h2 className="sr-only" id="portfolio-highlights-heading">
+          Portfolio highlights for Krikor Tsakmatzian
+        </h2>
         <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
           {stats.map((stat) => {
             const Icon = stat.icon;

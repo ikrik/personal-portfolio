@@ -2,27 +2,51 @@ import type { Metadata } from "next";
 import { identity } from "@/entities/portfolio/model/identity";
 
 export const metadata: Metadata = {
-  title: "Identity",
-  description: `Canonical identity and professional profile for ${identity.name}, also known as ${identity.preferredName}.`,
+  title: `${identity.name} Identity Profile`,
+  description: `Canonical identity profile for ${identity.name}, a Senior Full-Stack Engineer based in ${identity.location}.`,
   alternates: {
     canonical: "/identity",
   },
+  authors: [{ name: identity.name, url: identity.website }],
+  keywords: [
+    identity.name,
+    identity.preferredName,
+    "Krik Tsakmatzian",
+    identity.jobTitle,
+    identity.location,
+    ...identity.skills,
+    ...identity.technologies,
+  ],
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: `${identity.name} — Identity`,
-    description: `Canonical identity and professional profile for ${identity.name}, also known as ${identity.preferredName}.`,
+    title: `${identity.name} Identity Profile`,
+    description: `Canonical identity profile for ${identity.name}, a Senior Full-Stack Engineer based in ${identity.location}.`,
     url: "/identity",
     type: "profile",
     locale: "en_US",
     siteName: `${identity.name} Portfolio`,
+    images: [
+      {
+        url: "/images/avatar.jpg",
+        width: 512,
+        height: 512,
+        alt: `Cartoon-style portrait of ${identity.name}`,
+      },
+    ],
   },
   twitter: {
     card: "summary",
-    title: `${identity.name} — Identity`,
-    description: `Canonical identity and professional profile for ${identity.name}, also known as ${identity.preferredName}.`,
+    title: `${identity.name} Identity Profile`,
+    description: `Canonical identity profile for ${identity.name}, a Senior Full-Stack Engineer based in ${identity.location}.`,
+    images: [
+      {
+        url: "/images/avatar.jpg",
+        alt: `Cartoon-style portrait of ${identity.name}`,
+      },
+    ],
   },
 };
 
@@ -30,6 +54,7 @@ const linkItems = [
   { label: "Main website", href: identity.links.website },
   { label: "GitHub profile", href: identity.links.github },
   { label: "LinkedIn profile", href: identity.links.linkedin },
+  { label: "Contact", href: `${identity.website}/#contact` },
   ...(identity.links.resume
     ? [{ label: "Résumé", href: identity.links.resume }]
     : []),
@@ -69,6 +94,11 @@ export default function IdentityPage() {
               About
             </h2>
             <p className="mt-4">{identity.professionalSummary}</p>
+            <p className="mt-4">
+              {identity.name} works from {identity.location} and focuses on
+              frontend-heavy product engineering, maintainable systems, and
+              practical technical ownership.
+            </p>
           </section>
 
           <section aria-labelledby="names-heading">
@@ -101,6 +131,20 @@ export default function IdentityPage() {
             <ul className="mt-4 grid list-disc gap-x-8 gap-y-1 pl-5 sm:grid-cols-2">
               {identity.skills.map((skill) => (
                 <li key={skill}>{skill}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section aria-labelledby="technologies-heading">
+            <h2
+              className="text-2xl font-semibold text-primary"
+              id="technologies-heading"
+            >
+              Technologies
+            </h2>
+            <ul className="mt-4 grid list-disc gap-x-8 gap-y-1 pl-5 sm:grid-cols-2">
+              {identity.technologies.map((technology) => (
+                <li key={technology}>{technology}</li>
               ))}
             </ul>
           </section>

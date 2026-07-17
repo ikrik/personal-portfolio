@@ -10,10 +10,12 @@ export function FreelanceProjects() {
     <div className="mt-20">
       <div className="mb-6 flex flex-col justify-between">
         <Section.Eyebrow>Part-Time Freelance Work</Section.Eyebrow>
-        <Section.Title>Selected Client Projects</Section.Title>
+        <h3 className="max-w-3xl font-sans text-3xl font-semibold tracking-tight text-primary md:text-5xl">
+          Selected Client Projects
+        </h3>
         <Section.Intro>
           Freelance collaborations alongside full-time roles, typically scoped
-          around focused weekly commitments of 10-25 hours.
+          around focused weekly commitments of 10 to 25 hours.
         </Section.Intro>
       </div>
       <div className="grid gap-4 lg:grid-cols-3">

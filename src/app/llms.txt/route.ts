@@ -4,30 +4,28 @@ export const dynamic = "force-static";
 
 const content = `# ${identity.name}
 
-> ${identity.jobTitle} based in ${identity.location}.
+${identity.name} is a ${identity.jobTitle} based in ${identity.location}.
 
 ## Identity
 - Canonical name: ${identity.name}
-- Preferred name: ${identity.preferredName}
 - Aliases: ${identity.aliases.join(", ")}
+- Stable person ID: ${identity.website}/#person
 
-## Professional summary
+## Summary
 ${identity.professionalSummary}
 
-## Core technologies
-${identity.skills.join(", ")}
+## Skills
+${identity.skills.slice(0, 8).join(", ")}
 
-## Areas of expertise
-${identity.experienceAreas.join(", ")}
+## Technologies
+${identity.technologies.join(", ")}
 
-## Important links
+## Links
 - Website: ${identity.links.website}
 - GitHub: ${identity.links.github}
 - LinkedIn: ${identity.links.linkedin}
 - Identity page: ${identity.website}/identity
 - Machine-readable profile: ${identity.website}/api/profile
-
-## Contact
 - Email: ${identity.email}
 `;
 

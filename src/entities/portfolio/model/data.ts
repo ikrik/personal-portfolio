@@ -108,7 +108,7 @@ export const experiences: Experience[] = [
     role: "Founding Frontend Engineer",
     period: "Feb 2020 - Present",
     summary:
-      "Leading frontend architecture for a B2B pharmaceutical analytics platform with Angular 8-20, interactive dashboards, data visualization, and an internall LLM-powered chatbot with citation-backed answers.",
+      "Leading frontend architecture for a B2B pharmaceutical analytics platform with Angular 8-20, interactive dashboards, data visualization, and an internal LLM-powered chatbot with citation-backed answers.",
     tags: [
       "Angular",
       "AI Chatbot",
@@ -125,7 +125,7 @@ export const experiences: Experience[] = [
     role: "Senior Full-Stack Engineer",
     period: "Mar 2025 - May 2026",
     summary:
-      "Owning complex frontend features in a scalable Next.js 15 CMS with Clean Architecture, domain-driven TypeScript, shadcn/ui, Storybook, Atomic Design, and Nx in a monorepo environment combining with Fastify/NestJS services ",
+      "Owning complex frontend features in a scalable Next.js 15 CMS with Clean Architecture, domain-driven TypeScript, shadcn/ui, Storybook, Atomic Design, and Nx in a monorepo environment combined with Fastify/NestJS services.",
     tags: [
       "Next.js",
       "React",
@@ -236,7 +236,7 @@ export const freelanceSideProjects: FreelanceProject[] = [
     period: "Apr 2020 - May 2023",
     summary:
       "Map-based business intelligence product using geolocation-heavy data views, interactive map layers, and spatial analysis workflows.",
-    tags: ["React", "JavaScript", "Kepler.gl", "Mapbox", "Geolocations"],
+    tags: ["React", "JavaScript", "Kepler.gl", "Mapbox", "Geolocation"],
     accent: "pink",
   },
 ];

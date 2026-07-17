@@ -37,7 +37,7 @@ export function ContactSection() {
               className="size-3 md:size-4 text-primary-bright"
             />
             <span className="font-semibold text-[0.625rem] md:text-xs">
-              Remote First - Based in {profile.location}
+              Remote-first, based in {profile.location}
             </span>
           </span>
         </div>

@@ -26,6 +26,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  applicationName: `${identity.name} Portfolio`,
+  category: "technology",
   metadataBase: new URL(identity.website),
   title: {
     default: `${identity.name} | ${identity.role}`,
@@ -56,11 +58,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: `${identity.name} Portfolio`,
+    images: [
+      {
+        url: "/images/avatar.jpg",
+        width: 512,
+        height: 512,
+        alt: `Cartoon-style portrait of ${identity.name}`,
+      },
+    ],
   },
   twitter: {
     card: "summary",
     title: `${identity.name} | ${identity.role}`,
     description: identity.metaDescription,
+    images: [
+      {
+        url: "/images/avatar.jpg",
+        alt: `Cartoon-style portrait of ${identity.name}`,
+      },
+    ],
   },
   robots: {
     index: true,
