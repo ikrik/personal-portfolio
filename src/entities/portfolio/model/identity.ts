@@ -30,7 +30,7 @@ export type PortfolioIdentity = {
   };
 };
 
-const email = "gregtsakma@gmail.com";
+const email = "hello@kriktsakma.dev";
 
 export const identity = {
   name: "Krikor Tsakmatzian",
